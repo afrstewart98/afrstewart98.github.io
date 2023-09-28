@@ -24,7 +24,7 @@ export default function CurrencyConverter() {
         <CountrySelector onCountryChange={setConvertFrom} />
         <CountrySelector onCountryChange={setConvertTo} />
       </CardContent>
-      <CardActions>
+      <CardActions sx={{justifyContent: "center"}}>
         <ConvertActions
           inputValue={inputValue}
           convertTo={convertTo}

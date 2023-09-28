@@ -2,8 +2,9 @@ import Button from "@mui/material/Button";
 import { useEffect, useState } from "react";
 import { Rates, getRates } from "../services/ratesService";
 import { Box, Typography } from "@mui/material";
+import { useTimer } from "react-timer-hook";
 
-interface ConvertButtonProps {
+interface ConvertActionsProps {
   inputValue: number;
   convertTo: string;
   convertFrom: string;
@@ -17,11 +18,17 @@ export default function ConvertActions({
   convertTo,
   convertFrom,
   disabled,
-}: ConvertButtonProps) {
+}: ConvertActionsProps) {
   const [rates, setRates] = useState<Rates>({});
-  const [initialInputValue, setInitialInputValue] =
-    useState<number>(inputValue);
-  const [conversionValue, setConversionValue] = useState<number>(0);
+  const [conversionString, setConversionString] = useState<string>("");
+  const {
+    seconds,
+    minutes,
+    restart,
+  } = useTimer({
+    expiryTimestamp: new Date(),
+    autoStart: false
+  });
 
   useEffect(() => {
     getRates(convertFrom).then((res) => {
@@ -31,25 +38,26 @@ export default function ConvertActions({
 
   const handleConversion = () => {
     const roundedConversion = (inputValue * rates[convertTo]).toFixed(2);
-    setInitialInputValue(inputValue);
-    setConversionValue(Number(roundedConversion));
+    setConversionString(
+      `${inputValue} ${convertFrom} is equivalent to ${roundedConversion} ${convertTo}`
+    );
+    const time = new Date();
+    time.setSeconds(time.getSeconds() + 600);
+    restart(time);
   };
 
   return (
-    <Box display="flex" flexDirection="column" alignItems="center">
-      {conversionValue ? (
+    <Box display="flex" flexDirection="column" alignItems="center" gap={1}>
+      {((minutes === 0 && seconds === 0) || !conversionString) ? null : (
         <>
-        <Box>
-        <Typography>
-          {`Expires in`}
-        </Typography>
-        </Box>
-        <Typography>
-          {`${initialInputValue} ${convertFrom} is equivalent to ${conversionValue} ${convertTo}`}
-        </Typography>
+          <Typography variant="h6">{conversionString}</Typography>
+          <Typography>
+            {"Expires in "}
+            {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
+          </Typography>
         </>
-      ) : undefined}
-      <Button onClick={handleConversion} disabled={disabled}>
+      )}
+      <Button variant="contained" onClick={handleConversion} disabled={disabled}>
         {CONVERT_BUTTON_TEXT}
       </Button>
     </Box>

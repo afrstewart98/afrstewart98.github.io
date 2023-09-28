@@ -8,16 +8,16 @@ import { Countries, getCountries } from "../services/countriesService";
 
 interface CountrySelectorProps {
   onCountryChange: (value: string) => void;
+  country: string;
 }
 
 export default function CountrySelector({
   onCountryChange,
+  country
 }: CountrySelectorProps) {
   const [countries, setCountries] = useState<Countries>({});
-  const [country, setCountry] = useState<string>("");
 
   const handleChange = (event: SelectChangeEvent) => {
-    setCountry(event.target.value as string);
     onCountryChange(event.target.value as string);
   };
 
@@ -25,7 +25,7 @@ export default function CountrySelector({
     getCountries().then((res) => {
       setCountries(res);
     });
-  }, []);
+  }, [country]);
 
   return (
     <Box marginTop={4}>

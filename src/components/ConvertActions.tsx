@@ -21,13 +21,9 @@ export default function ConvertActions({
 }: ConvertActionsProps) {
   const [rates, setRates] = useState<Rates>({});
   const [conversionString, setConversionString] = useState<string>("");
-  const {
-    seconds,
-    minutes,
-    restart,
-  } = useTimer({
+  const { seconds, minutes, restart } = useTimer({
     expiryTimestamp: new Date(),
-    autoStart: false
+    autoStart: false,
   });
 
   useEffect(() => {
@@ -48,7 +44,7 @@ export default function ConvertActions({
 
   return (
     <Box display="flex" flexDirection="column" alignItems="center" gap={1}>
-      {((minutes === 0 && seconds === 0) || !conversionString) ? null : (
+      {(minutes === 0 && seconds === 0) || !conversionString ? null : (
         <>
           <Typography variant="h6">{conversionString}</Typography>
           <Typography>
@@ -57,7 +53,11 @@ export default function ConvertActions({
           </Typography>
         </>
       )}
-      <Button variant="contained" onClick={handleConversion} disabled={disabled}>
+      <Button
+        variant="contained"
+        onClick={handleConversion}
+        disabled={disabled}
+      >
         {CONVERT_BUTTON_TEXT}
       </Button>
     </Box>

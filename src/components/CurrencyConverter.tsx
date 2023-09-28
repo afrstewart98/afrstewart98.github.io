@@ -8,23 +8,32 @@ import { useState } from "react";
 import CardHeader from "@mui/material/CardHeader";
 
 export default function CurrencyConverter() {
-  const [convertTo, setConvertTo] = useState<string>("EUR");
-  const [convertFrom, setConvertFrom] = useState<string>("GBP");
+  const [convertTo, setConvertTo] = useState<string>("");
+  const [convertFrom, setConvertFrom] = useState<string>("");
   const [inputValue, setInputValue] = useState<number>(0);
   const [disabled, setDisabled] = useState<boolean>(false);
 
+  const handleCurrencySwitch = () => {
+    setConvertFrom(convertTo);
+    setConvertTo(convertFrom);
+  };
+
   return (
-    <Card sx={{ width: 500 }}>
+    <Card sx={{ minWidth: 500 }}>
       <CardHeader title="Currency Converter" />
       <CardContent>
         <InputValue
           onInputValueChange={setInputValue}
           onDisabledChange={setDisabled}
+          handleCurrencySwitch={handleCurrencySwitch}
         />
-        <CountrySelector onCountryChange={setConvertFrom} />
-        <CountrySelector onCountryChange={setConvertTo} />
+        <CountrySelector
+          onCountryChange={setConvertFrom}
+          country={convertFrom}
+        />
+        <CountrySelector onCountryChange={setConvertTo} country={convertTo} />
       </CardContent>
-      <CardActions sx={{justifyContent: "center"}}>
+      <CardActions sx={{ justifyContent: "center" }}>
         <ConvertActions
           inputValue={inputValue}
           convertTo={convertTo}

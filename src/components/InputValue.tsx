@@ -7,11 +7,13 @@ import { useState } from "react";
 interface InputValueProps {
   onInputValueChange: (value: number) => void;
   onDisabledChange: (value: boolean) => void;
+  handleCurrencySwitch: () => void;
 }
 
 export default function InputValue({
   onInputValueChange,
   onDisabledChange,
+  handleCurrencySwitch,
 }: InputValueProps) {
   const [error, setError] = useState<string>("");
 
@@ -21,10 +23,6 @@ export default function InputValue({
     onDisabledChange(validatedInput ? true : false);
     onInputValueChange(parseFloat(newText));
   };
-
-  const handleSwitchConversion = ()=>{
-    
-  }
 
   return (
     <TextField
@@ -39,7 +37,7 @@ export default function InputValue({
           <InputAdornment position="end">
             <IconButton
               aria-label="switch currency conversion"
-              onClick={handleSwitchConversion}
+              onClick={handleCurrencySwitch}
               edge="end"
             >
               <CompareArrowsIcon />

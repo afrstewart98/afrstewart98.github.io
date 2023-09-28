@@ -2,7 +2,7 @@ import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import ConvertActions, { CONVERT_BUTTON_TEXT } from "./ConvertActions";
 import * as ratesService from "../services/ratesService";
-
+ 
 describe("ConvertActions", () => {
   const inputValue = 1000;
   const convertTo = "EUR";

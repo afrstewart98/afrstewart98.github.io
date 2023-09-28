@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import InputValue, { INPUT_LABEL } from "./InputValue";
-
+ 
 describe("InputValue", () => {
   let onInputValueChange: (value: number) => void;
   let onDisabledChange: (value: boolean) => void;

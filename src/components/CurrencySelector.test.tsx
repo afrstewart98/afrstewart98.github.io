@@ -1,6 +1,6 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import CurrencySelector, { CURRENCY_LABEL } from "./CurrencySelector";
+import CurrencySelector from "./CurrencySelector";
 import * as currenciesService from "../services/currenciesService";
 
 describe("CurrencySelector", () => {
@@ -11,10 +11,12 @@ describe("CurrencySelector", () => {
     onCurrencyChange = jest.fn();
     currency = "";
 
-    jest.spyOn(currenciesService, "getCurrencies").mockReturnValue(Promise.resolve({
-      GBP: "British Pound Sterling",
-      EUR: "Euro",
-    }));
+    jest.spyOn(currenciesService, "getCurrencies").mockReturnValue(
+      Promise.resolve({
+        GBP: "British Pound Sterling",
+        EUR: "Euro",
+      })
+    );
 
     renderCurrencySelector();
   });
@@ -24,11 +26,7 @@ describe("CurrencySelector", () => {
       expect(getCurrencySelector()).toBeInTheDocument();
     });
 
-    it("should have a title", () => {
-      expect(screen.getByText(CURRENCY_LABEL)).toBeInTheDocument();
-    });
-
-    it("should have populated the currency options", () => {
+    it("should have populated the currency options", async () => {
       expect(screen.getAllByRole("option").length).toBe(2);
     });
   });

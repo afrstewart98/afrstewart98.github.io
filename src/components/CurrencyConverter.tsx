@@ -8,8 +8,8 @@ import { useState } from "react";
 import CardHeader from "@mui/material/CardHeader";
 
 export default function CurrencyConverter() {
-  const [convertTo, setConvertTo] = useState<string>("");
-  const [convertFrom, setConvertFrom] = useState<string>("");
+  const [convertTo, setConvertTo] = useState<string>("EUR");
+  const [convertFrom, setConvertFrom] = useState<string>("GBP");
   const [inputValue, setInputValue] = useState<number>(0);
   const [disabled, setDisabled] = useState<boolean>(false);
 

@@ -1,8 +1,8 @@
-export interface Countries {
+export interface Currencies {
   [key: string]: string;
 }
 
-export function getCountries() {
+export function getCurrencies() {
   return fetch("https://openexchangerates.org/api/currencies.json")
     .then(response => response.json())
     .catch(error => {

@@ -4,42 +4,43 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { useEffect, useState } from "react";
-import { Countries, getCountries } from "../services/countriesService";
+import { Currencies, getCurrencies } from "../services/currenciesService";
 
-interface CountrySelectorProps {
-  onCountryChange: (value: string) => void;
-  country: string;
+export const CURRENCY_LABEL: string = "Currency";
+
+interface CurrencySelectorProps {
+  onCurrencyChange: (value: string) => void;
+  currency: string;
 }
 
-export default function CountrySelector({
-  onCountryChange,
-  country
-}: CountrySelectorProps) {
-  const [countries, setCountries] = useState<Countries>({});
+export default function CurrencySelector({
+  onCurrencyChange,
+  currency,
+}: CurrencySelectorProps) {
+  const [currencies, setCurrencies] = useState<Currencies>({});
 
   const handleChange = (event: SelectChangeEvent) => {
-    onCountryChange(event.target.value as string);
+    onCurrencyChange(event.target.value as string);
   };
 
   useEffect(() => {
-    getCountries().then((res) => {
-      setCountries(res);
+    getCurrencies().then((res) => {
+      setCurrencies(res);
     });
-  }, [country]);
+  }, [currency]);
 
   return (
     <Box marginTop={4}>
       <FormControl fullWidth>
-        <InputLabel id="currency-selector-label">Country</InputLabel>
+        <InputLabel id="currency-selector-label">Currency</InputLabel>
         <Select
           labelId="currency-selector-label"
           id="currency-selector"
-          value={country}
-          label="Country"
+          value={currency}
           onChange={handleChange}
           fullWidth={true}
         >
-          {Object.keys(countries).map((key) => {
+          {Object.keys(currencies).map((key) => {
             const flagCode = key.slice(0, -1).toLowerCase();
             return (
               <MenuItem key={key} value={key}>
@@ -49,7 +50,7 @@ export default function CountrySelector({
                   height="12"
                   alt={`${flagCode} flag`}
                 />
-                {key}/{countries[key]}
+                {key}/{currencies[key]}
               </MenuItem>
             );
           })}

@@ -11,7 +11,7 @@ interface ConvertActionsProps {
   disabled: boolean;
 }
 
-const CONVERT_BUTTON_TEXT: string = "Convert";
+export const CONVERT_BUTTON_TEXT: string = "Convert";
 
 export default function ConvertActions({
   inputValue,
@@ -46,7 +46,7 @@ export default function ConvertActions({
     <Box display="flex" flexDirection="column" alignItems="center" gap={1}>
       {(minutes === 0 && seconds === 0) || !conversionString ? null : (
         <>
-          <Typography variant="h6">{conversionString}</Typography>
+          <Typography variant="h6" data-testid="countdown-timer">{conversionString}</Typography>
           <Typography>
             {"Expires in "}
             {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
@@ -57,6 +57,7 @@ export default function ConvertActions({
         variant="contained"
         onClick={handleConversion}
         disabled={disabled}
+        data-testid="convert-button"
       >
         {CONVERT_BUTTON_TEXT}
       </Button>

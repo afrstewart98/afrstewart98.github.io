@@ -1,6 +1,6 @@
 import Card from "@mui/material/Card";
 import InputValue from "./InputValue";
-import CountrySelector from "./CountrySelector";
+import CurrencySelector from "./CurrencySelector";
 import ConvertActions from "./ConvertActions";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
@@ -27,11 +27,11 @@ export default function CurrencyConverter() {
           onDisabledChange={setDisabled}
           handleCurrencySwitch={handleCurrencySwitch}
         />
-        <CountrySelector
-          onCountryChange={setConvertFrom}
-          country={convertFrom}
+        <CurrencySelector
+          onCurrencyChange={setConvertFrom}
+          currency={convertFrom}
         />
-        <CountrySelector onCountryChange={setConvertTo} country={convertTo} />
+        <CurrencySelector onCurrencyChange={setConvertTo} currency={convertTo} />
       </CardContent>
       <CardActions sx={{ justifyContent: "center" }}>
         <ConvertActions

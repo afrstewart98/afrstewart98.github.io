@@ -4,6 +4,8 @@ import TextField from "@mui/material/TextField";
 import CompareArrowsIcon from "@mui/icons-material/CompareArrows";
 import { useState } from "react";
 
+export const INPUT_LABEL:string = "Amount"
+
 interface InputValueProps {
   onInputValueChange: (value: number) => void;
   onDisabledChange: (value: boolean) => void;
@@ -28,7 +30,7 @@ export default function InputValue({
     <TextField
       required
       id="Value Input"
-      label="Amount"
+      label={INPUT_LABEL}
       onChange={(e) => handleTextChange(e.target.value)}
       helperText={error}
       fullWidth={true}
@@ -36,7 +38,7 @@ export default function InputValue({
         endAdornment: (
           <InputAdornment position="end">
             <IconButton
-              aria-label="switch currency conversion"
+              aria-label="switch-currency-conversion"
               onClick={handleCurrencySwitch}
               edge="end"
             >

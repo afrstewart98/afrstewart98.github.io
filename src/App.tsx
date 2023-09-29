@@ -1,4 +1,5 @@
 import Box from "@mui/material/Box";
+
 import CurrencyConverter from "./components/CurrencyConverter";
 
 export default function App() {

@@ -1,14 +1,15 @@
-import Box from "@mui/material/Box";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
-import { useEffect, useMemo, useState } from "react";
-import { getCurrencies } from "../services/currenciesService";
-import ListSubheader from "@mui/material/ListSubheader";
-import TextField from "@mui/material/TextField";
-import InputAdornment from "@mui/material/InputAdornment";
 import SearchIcon from "@mui/icons-material/Search";
+import Box from "@mui/material/Box";
+import FormControl from "@mui/material/FormControl";
+import InputAdornment from "@mui/material/InputAdornment";
+import InputLabel from "@mui/material/InputLabel";
+import ListSubheader from "@mui/material/ListSubheader";
+import MenuItem from "@mui/material/MenuItem";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
+import TextField from "@mui/material/TextField";
+import { useEffect, useMemo, useState } from "react";
+
+import { getCurrencies } from "../services/currenciesService";
 
 export const CURRENCY_LABEL: string = "Currency";
 

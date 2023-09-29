@@ -1,11 +1,12 @@
 import Card from "@mui/material/Card";
-import InputValue from "./InputValue";
-import CurrencySelector from "./CurrencySelector";
-import ConvertActions from "./ConvertActions";
-import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
-import { useState } from "react";
+import CardContent from "@mui/material/CardContent";
 import CardHeader from "@mui/material/CardHeader";
+import { useState } from "react";
+
+import ConvertActions from "./ConvertActions";
+import CurrencySelector from "./CurrencySelector";
+import InputValue from "./InputValue";
 
 export default function CurrencyConverter() {
   const [convertTo, setConvertTo] = useState<string>("EUR");

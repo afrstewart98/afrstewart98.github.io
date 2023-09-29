@@ -1,7 +1,7 @@
+import CompareArrowsIcon from "@mui/icons-material/CompareArrows";
 import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
 import TextField from "@mui/material/TextField";
-import CompareArrowsIcon from "@mui/icons-material/CompareArrows";
 import { useState } from "react";
 
 export const INPUT_LABEL:string = "Amount"

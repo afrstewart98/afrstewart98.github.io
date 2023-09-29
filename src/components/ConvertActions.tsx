@@ -1,8 +1,9 @@
+import { Box, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import { useEffect, useState } from "react";
-import { Rates, getRates } from "../services/ratesService";
-import { Box, Typography } from "@mui/material";
 import { useTimer } from "react-timer-hook";
+
+import { getRates,Rates } from "../services/ratesService";
 
 interface ConvertActionsProps {
   inputValue: number;

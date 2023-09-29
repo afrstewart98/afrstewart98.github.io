@@ -1,7 +1,8 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import CurrencySelector from "./CurrencySelector";
+
 import * as currenciesService from "../services/currenciesService";
+import CurrencySelector from "./CurrencySelector";
 
 describe("CurrencySelector", () => {
   let onCurrencyChange: (value: string) => void;

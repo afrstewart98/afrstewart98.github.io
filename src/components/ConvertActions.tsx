@@ -3,7 +3,7 @@ import Button from "@mui/material/Button";
 import { useEffect, useState } from "react";
 import { useTimer } from "react-timer-hook";
 
-import { getRates,Rates } from "../services/ratesService";
+import { getRates, Rates } from "../services/ratesService";
 
 interface ConvertActionsProps {
   inputValue: number;
@@ -47,8 +47,10 @@ export default function ConvertActions({
     <Box display="flex" flexDirection="column" alignItems="center" gap={1}>
       {(minutes === 0 && seconds === 0) || !conversionString ? null : (
         <>
-          <Typography variant="h6" data-testid="countdown-timer">{conversionString}</Typography>
-          <Typography>
+          <Typography variant="h6" data-testid="conversion-result">
+            {conversionString}
+          </Typography>
+          <Typography data-testid="countdown-timer">
             {"Expires in "}
             {minutes}:{seconds < 10 ? `0${seconds}` : seconds}
           </Typography>

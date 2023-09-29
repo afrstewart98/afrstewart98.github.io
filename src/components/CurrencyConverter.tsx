@@ -20,7 +20,7 @@ export default function CurrencyConverter() {
   };
 
   return (
-    <Card sx={{ minWidth: 500 }}>
+    <Card sx={{ maxWidth: 500 }}>
       <CardHeader title="Currency Converter" />
       <CardContent>
         <InputValue
